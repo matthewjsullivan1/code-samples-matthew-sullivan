@@ -3,7 +3,7 @@ All code written by Matthew Sullivan
 
 /process-CSV-to-receipts-ordermatrix 
     Python
-    For sandpointcurry.com and processes database 
+    For http://sandpointcurry.com and processes database 
     Returns html tables containing receipts and order matrix
 
 /nanoHUB-binary-mixture-cyclic-peptides
