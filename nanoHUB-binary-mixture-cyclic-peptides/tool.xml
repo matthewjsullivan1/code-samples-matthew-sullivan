@@ -1,0 +1,366 @@
+<?xml version="1.0"?>
+<run>
+    <tool>
+        <title>Binary Mixture of Cyclic Macrocycles</title>
+        <about>A tool to simulate the mixing behavior of cyclic macrocycles based on user input</about>
+        <command>python @tool/main.py @driver</command>
+    </tool>
+    <input>
+        <note id="note">
+            <contents>file://note.html</contents>
+        </note>
+        <integer id="value36">
+            <about>
+            <label>Number of subunits</label>
+            <description>The number of total macrocycles that will be simulated</description>
+            </about>
+            <default>25</default>
+            <min>0</min>
+            <max>200</max>
+        </integer>
+        <boolean id="value56">
+            <about>
+                <label>Limit concentration?</label>
+                <description>Select yes to fix the concentration of subunits or leave blank so the box will increase in size as needed to fit all of the subunits</description>
+            </about>
+            <default>no</default>
+        </boolean>
+        <number id="value57">
+            <about>
+                <label>Concentration</label>
+                <description>The concentration of the simulation box with units subunits per angstrom^3.</description>
+                <enable>input.boolean(value56) == "yes"</enable>
+            </about>
+            <default>0</default>
+            <min>0</min>
+            <max>0.5</max>
+        </number>
+        <number id="value38">
+            <about>
+                <label>Percentage of red subunits</label>
+                <description>Percentage of total subunits that are red</description>
+            </about>
+            <default>50</default>
+            <min>0</min>
+            <max>100</max>
+        </number>
+        <integer id="value45">
+            <about>
+                <label>Number of sides</label>
+                <description>The number of sides of the simulated cyclic peptide</description>
+            </about>
+            <default>6</default>
+            <min>3</min>
+            <max>50</max>
+        </integer>
+        <boolean id="value37">
+            <about>
+                <label>Periodic boundary </label>
+                <description>The subunits will interact across the edges of simulation box.</description>
+            </about>
+            <default>yes</default>
+        </boolean>
+        <number id="value35">
+            <about>
+                <label>Temperature (K)</label>
+                <description>Temperature of simulation</description>
+            </about>
+            <default>300</default>
+            <units>K</units>
+            <min>100</min>
+            <max>1000</max>
+        </number>
+        <number id="value39">
+            <about>
+                <label>Red to red interaction</label>
+                <description>The L-J depth of the potential well between red subunits</description>
+            </about>
+            <default>2.0</default>
+            <min>0</min>
+            <max>10</max>
+        </number>
+        <number id="value40">
+            <about>
+                <label>Blue to blue interaction</label>
+                <description>The L-J depth of the potential well between blue subunits</description>
+            </about>
+            <default>2.0</default>
+            <min>0</min>
+            <max>10</max>
+        </number>
+        <number id="value41">
+            <about>
+                <label>Red to blue interaction</label>
+                <description>The L-J depth of the potential well between red and blue subunits</description>
+            </about>
+            <default>2.0</default>
+            <min>0</min>
+            <max>10</max>
+        </number>
+        <number id="value84">
+            <about>
+                <label>Simulation time(ns)</label>
+                <description>The duration of the simulation</description>
+            </about>
+            <default>2.5</default>
+            <min>0</min>
+            <max>25</max>
+        </number>
+        <boolean id="value87">
+            <about>
+                <label>Open Jmol viewer?</label>
+                <description>If yes, the Jmol viewer that displays the atom trajectory will open in a separate tab</description>
+            </about>
+            <default>yes</default>
+        </boolean>
+    </input>
+    <output>
+        <number id="value49">
+            <about>
+                <label>Average length</label>
+                <description>The average length of all self-assembled subunits</description>
+            </about>
+        </number>
+        <histogram id="interfaces">
+            <about>
+                <label>Number of Interfaces</label>
+                <description>Contains the number of interfaces between the two subunit types</description>
+            </about>
+            <xaxis>
+                <label>Interface Type</label>
+                <description>R means red and B means blue</description>
+            </xaxis>
+            <yaxis>
+                <label>Number of Interfaces</label>
+                <description>Counts of the three interface types</description>
+            </yaxis>
+        </histogram>
+        <sequence id="lengths">
+            <about>
+                <label>Sequence of histograms</label>
+            </about>
+            <index>
+                <label>Completion (%)</label>
+            </index>
+            <element id="1">
+                <index>0.0</index>
+                <histogram>
+                    <about>
+                        <label>Histogram of lengths</label>
+                        <description>Histogram of nanotube length distribution of CPN</description>
+                    </about>
+                    <xaxis>
+                        <label>Number of subunits in self-assembled nanotube</label>
+                        <description>The number of subunits in a nanotube</description>
+                    </xaxis>
+                    <yaxis>
+                        <label>The number of nanotubes</label>
+                        <description>The number of nanotubes found in each category</description>
+                    </yaxis>
+                </histogram>
+            </element>
+            <element id ="2">
+                <index>10.0</index>
+                <histogram>
+                    <about>
+                        <label>Histogram of lengths</label>
+                        <description>Histogram of nanotube length distribution of CPN</description>
+                    </about>
+                    <xaxis>
+                        <label>Number of subunits in self-assembled nanotube</label>
+                        <description>The number of subunits in a nanotube</description>
+                    </xaxis>
+                    <yaxis>
+                        <label>The number of nanotubes</label>
+                        <description>The number of nanotubes found in each category</description>
+                    </yaxis>
+                </histogram>
+            </element>
+            <element id="3">
+                <index>20.0</index>
+                <histogram>
+                    <about>
+                        <label>Histogram of lengths</label>
+                        <description>Histogram of nanotube length distribution of CPN</description>
+                    </about>
+                    <xaxis>
+                        <label>Number of subunits in self-assembled nanotube</label>
+                        <description>The number of subunits in a nanotube</description>
+                    </xaxis>
+                    <yaxis>
+                        <label>The number of nanotubes</label>
+                        <description>The number of nanotubes found in each category</description>
+                    </yaxis>
+                </histogram>
+            </element>
+            <element id="4">
+                <index>30.0</index>
+                <histogram>
+                    <about>
+                        <label>Histogram of lengths</label>
+                        <description>Histogram of nanotube length distribution of CPN</description>
+                    </about>
+                    <xaxis>
+                        <label>Number of subunits in self-assembled nanotube</label>
+                        <description>The number of subunits in a nanotube</description>
+                    </xaxis>
+                    <yaxis>
+                        <label>The number of nanotubes</label>
+                        <description>The number of nanotubes found in each category</description>
+                    </yaxis>
+                </histogram> 
+            </element>
+            <element id="5">
+                <index>40.0</index>
+                <histogram>
+                    <about>
+                        <label>Histogram of lengths</label>
+                        <description>Histogram of nanotube length distribution of CPN</description>
+                    </about>
+                    <xaxis>
+                        <label>Number of subunits in self-assembled nanotube</label>
+                        <description>The number of subunits in a nanotube</description>
+                    </xaxis>
+                    <yaxis>
+                        <label>The number of nanotubes</label>
+                        <description>The number of nanotubes found in each category</description>
+                    </yaxis>
+                </histogram>
+            </element>
+            <element id="6">
+                <index>50.0</index>
+                <histogram>
+                    <about>
+                        <label>Histogram of lengths</label>
+                        <description>Histogram of nanotube length distribution of CPN</description>
+                    </about>
+                    <xaxis>
+                        <label>Number of subunits in self-assembled nanotube</label>
+                        <description>The number of subunits in a nanotube</description>
+                    </xaxis>
+                    <yaxis>
+                        <label>The number of nanotubes</label>
+                        <description>The number of nanotubes found in each category</description>
+                    </yaxis>
+                </histogram>
+            </element>
+            <element id="7">
+                <index>60.0</index>
+                <histogram>
+                    <about>
+                        <label>Histogram of lengths</label>
+                        <description>Histogram of nanotube length distribution of CPN</description>
+                    </about>
+                    <xaxis>
+                        <label>Number of subunits in self-assembled nanotube</label>
+                        <description>The number of subunits in a nanotube</description>
+                    </xaxis>
+                    <yaxis>
+                        <label>The number of nanotubes</label>
+                        <description>The number of nanotubes found in each category</description>
+                    </yaxis>
+                </histogram>
+            </element>
+            <element id="8">
+                <index>70.0</index>
+                <histogram>
+                    <about>
+                        <label>Histogram of lengths</label>
+                        <description>Histogram of nanotube length distribution of CPN</description>
+                    </about>
+                    <xaxis>
+                        <label>Number of subunits in self-assembled nanotube</label>
+                        <description>The number of subunits in a nanotube</description>
+                    </xaxis>
+                    <yaxis>
+                        <label>The number of nanotubes</label>
+                        <description>The number of nanotubes found in each category</description>
+                    </yaxis>
+                </histogram>
+            </element>
+            <element id="9">
+                <index>80.0</index>
+                <histogram>
+                    <about>
+                        <label>Histogram of lengths</label>
+                        <description>Histogram of nanotube length distribution of CPN</description>
+                    </about>
+                    <xaxis>
+                        <label>Number of subunits in self-assembled nanotube</label>
+                        <description>The number of subunits in a nanotube</description>
+                    </xaxis>
+                    <yaxis>
+                        <label>The number of nanotubes</label>
+                        <description>The number of nanotubes found in each category</description>
+                    </yaxis>
+                </histogram>
+            </element>
+            <element id="10">
+                <index>90.0</index>
+                <histogram>
+                    <about>
+                        <label>Histogram of lengths</label>
+                        <description>Histogram of nanotube length distribution of CPN</description>
+                    </about>
+                    <xaxis>
+                        <label>Number of subunits in self-assembled nanotube</label>
+                        <description>The number of subunits in a nanotube</description>
+                    </xaxis>
+                    <yaxis>
+                        <label>The number of nanotubes</label>
+                        <description>The number of nanotubes found in each category</description>
+                    </yaxis>
+                </histogram>
+            </element>
+            <element id="11">
+                <index>100.0</index>
+                <histogram>
+                    <about>
+                        <label>Histogram of lengths</label>
+                        <description>Histogram of nanotube length distribution of CPN</description>
+                    </about>
+                    <xaxis>
+                        <label>Number of subunits in self-assembled nanotube</label>
+                        <description>The number of subunits in a nanotube</description>
+                    </xaxis>
+                    <yaxis>
+                        <label>The number of nanotubes</label>
+                        <description>The number of nanotubes found in each category</description>
+                    </yaxis>
+                </histogram>
+            </element>
+        </sequence>
+        <curve id="value43">
+            <about>
+                <label>Energy vs. Time</label>
+                <description>A line graph of energy vs. time</description>
+            </about>
+            <xaxis>
+                <label>Time</label>
+                <description>Time since the beginning of the simulation</description>
+                <units>ns</units>
+            </xaxis>
+            <yaxis>
+                <label>Energy </label>
+                <description>Total energy in the simulation box</description>
+                <units>Lammps</units>
+            </yaxis>
+        </curve>
+        <curve id="value44">
+            <about>
+                <label>Temperature vs. Time</label>
+                <description>A line graph of temperature vs. time</description>
+            </about>
+            <xaxis>
+                <label>Time</label>
+                <description>Time since the beginning of the simulation</description>
+                <units>ns</units>
+            </xaxis>
+            <yaxis>
+                <label>Temperature </label>
+                <description>Temperature in the simulation box</description>
+                <units>K</units>
+            </yaxis>
+        </curve>
+    </output>
+</run>

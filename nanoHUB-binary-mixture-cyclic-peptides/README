@@ -1,0 +1,13 @@
+https://nanohub.org/resources/compnano
+
+To view online, a nanoHUB account is needed.
+
+General idea, writes files containing information (atom positions, bond pairs, etc) needed to run simulation.
+
+Run simulation on external computing resources.
+
+Process output files and return nice graphs for the user.
+
+
+
+
