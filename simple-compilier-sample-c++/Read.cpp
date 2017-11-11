@@ -132,7 +132,6 @@ void Read::Processlinedata(string str) {
 		ret.push_back("A");
 		WriteOperation(ReturnOPcodes(ret));
 		Read::RAMlocation++;
-		return;
 	}
 	else {
 		//Save Variable position and write commands
@@ -152,7 +151,6 @@ void Read::Processlinedata(string str) {
 		ret.push_back("A");
 		WriteOperation(ReturnOPcodes(ret));
 		Read::RAMlocation++;
-		return;
 	}
 }
 
@@ -187,10 +185,6 @@ void Read::Processline(string str){
 				ret.push_back(secarg);
 			}
 			WriteOperation(ReturnOPcodes(ret));
-			return;
-	}
-	else {
-		return;
 	}
 }
 
